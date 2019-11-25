@@ -1,6 +1,6 @@
 import React from 'react';
 import { AuthConsumer } from './../contexts/AuthContext';
-import logo from './../public/assets/img/gc-logo-default.svg';
+import logo from './../public/assets/img/gc-logo-default-diapo.svg';
 
 export default () => (
   <AuthConsumer>
