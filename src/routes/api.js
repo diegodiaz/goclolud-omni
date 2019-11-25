@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {check, validationResult} = require('express-validator');
+const users = require('./../controllers/users');
 
 // Route api user login 
 router.post('/user/login', [
@@ -12,7 +13,7 @@ router.post('/user/login', [
     if (!errors.isEmpty()) {
       return res.status(422).jsonp(errors.array());
     } else {
-      res.send({});
+      users.Login(req, res);
     }
   }
 );
