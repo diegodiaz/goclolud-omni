@@ -10,12 +10,12 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.json());
 
 // Statics
-app.use(express.static(path.join(__dirname,'../public')));
+app.use(express.static(path.join(__dirname,'app/public')));
 
 // Routes
 app.use('/api', require('./routes/api'));
 app.get('/login', (req,res) =>{
-  res.sendFile(path.join(__dirname,'../public/index.html'));
+  res.sendFile(path.join(__dirname,'app/public/index.html'));
 });
 
 // Server
