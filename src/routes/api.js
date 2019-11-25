@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const users = require('./../controllers/users');
+const details = require('./../controllers/details');
 
 // Route api user login 
 router.post('/user/login', [
@@ -20,6 +21,16 @@ router.post('/user/login', [
 // Route api user validate is login 
 router.post('/user/validate', (req, res)=>{
   res.json({success:true});
+});
+
+router.post('/details/resumen',(req, res)=>{
+  details.resumen(req, res);
+});
+router.post('/details/indications',(req, res)=>{
+  details.indications(req, res);
+});
+router.post('/details/list',(req, res)=>{
+  details.list(req, res);
 });
 
 module.exports = router;
