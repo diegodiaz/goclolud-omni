@@ -7,7 +7,8 @@ module.exports = {
     ignored: /node_modules/,
     poll: 1000
   },
-  entry: [path.join(__dirname,'src/app/index.js')],
+  devtool: 'inline-source-map',
+  entry: ['babel-polyfill', path.join(__dirname,'src/app/index.js')],
   output: {
     path: __dirname+'/public',
     filename: 'bundle.js'
