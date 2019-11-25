@@ -1,7 +1,26 @@
-import { createContext, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 
-export const LoadingContext = createContext();
+const LoadingContext = createContext();
 
-export function isLoading() {
-  return useContext(LoadingContext);
+const LoadingProvider = ({children}) => {
+  const [isLoading, setLoading] = useState(false);
+  const loading = (value) => {
+    setLoading(value);
+  };
+  return (
+    <LoadingContext.Provider
+      value={{
+        loading,
+        isLoading
+      }}
+      >
+      {children}
+    </LoadingContext.Provider>
+  );
 }
+
+const LoadingConsumer = LoadingContext.Consumer
+
+export { LoadingProvider, LoadingConsumer }
+
+export default LoadingContext;

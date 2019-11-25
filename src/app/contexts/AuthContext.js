@@ -1,27 +1,13 @@
 import React, {useState} from 'react'
 import { useHistory } from "react-router-dom";
 
-function HomeButton() {
-  
-
-  function handleClick() {
-    history.push("/home");
-  }
-
-  return (
-    <button type="button" onClick={handleClick}>
-      Go home
-    </button>
-  );
-}
-
-const AuthContext = React.createContext()
+const AuthContext = React.createContext();
 
 const AuthProvider = ({children}) => {
   let history = useHistory();
   const [isAuth, setAuth] = useState(false);
   const [authTokens, setAuthTokens] = useState('');
-  const login = async (state) => {
+  const login = async (state, next) => {
     try {
       const url = "/api/user/login";
       const method = "POST";
@@ -41,14 +27,18 @@ const AuthProvider = ({children}) => {
           setAuth(true);
           setTokens(res.token);
           history.push("/");
+          next();
         }else{
           logout();
         }
         console.log(res);
+      }).catch((err)=>{
+        console.log(err);
       });
     } catch (err) {
       console.log(err);
     }
+    next();
   };
 
   const setTokens = (data) => {

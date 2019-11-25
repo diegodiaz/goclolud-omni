@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
+import LoadingContext from './contexts/LoadingContext';
 import { AuthConsumer } from './contexts/AuthContext';
 
 const Login = () => {
   const [state, setState] = useState({username:'', password:''});
+  const loading = useContext(LoadingContext);
   return (
     <div className="gc-login">
       <div className="gc-bg-login">
@@ -38,7 +40,7 @@ const Login = () => {
                   </div>
                 </div>
                 <div className="gc-button_ accent">
-                  <button type="button" onClick={()=>{login(state)}}>Ingresar</button>
+                  <button type="button" onClick={()=>{ loading.loading(true); login(state, ()=>{loading.loading(false)});}}>Ingresar</button>
                 </div>
               </form>
             )}
