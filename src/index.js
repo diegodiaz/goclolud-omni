@@ -1,5 +1,4 @@
 const express = require('express');
-const session = require('express-session');
 const path = require('path');
 const app = express();
 
@@ -14,7 +13,7 @@ app.use(express.static(path.join(__dirname,'app/public')));
 
 // Routes
 app.use('/api', require('./routes/api'));
-app.get('/login', (req,res) =>{
+app.get('*', (req,res) =>{
   res.sendFile(path.join(__dirname,'app/public/index.html'));
 });
 
