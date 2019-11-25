@@ -2,7 +2,7 @@
   "name": "goclolud-omni",
   "version": "1.0.0",
   "description": "Proyecto demo para cumplir el desafío de GoCloud",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
     "prod": "webpack --mode production",
