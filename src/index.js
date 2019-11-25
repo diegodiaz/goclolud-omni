@@ -14,6 +14,9 @@ app.use(express.static(path.join(__dirname,'../public')));
 
 // Routes
 app.use('/api', require('./routes/api'));
+app.get('/login', (req,res) =>{
+  res.sendFile(path.join(__dirname,'../public/index.html'));
+});
 
 // Server
 app.listen(app.get('port'), () => {
