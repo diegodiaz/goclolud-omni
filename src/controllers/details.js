@@ -16,7 +16,7 @@ exports.resumen = (req, res) => {
     // Call DynamoDB to read the item from the table
     ddb.getItem(params, function(err, data) {
       if (err) {
-        res.json({success: error});
+        res.json({success: false});
       } else {
         res.json({success: true, data: data.Item});
       }

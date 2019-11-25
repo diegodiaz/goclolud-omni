@@ -1,4 +1,5 @@
 const express = require('express');
+const auth = require('./../middleware/auth');
 const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const users = require('./../controllers/users');
@@ -29,7 +30,7 @@ router.post('/details/resumen',(req, res)=>{
 router.post('/details/indications',(req, res)=>{
   details.indications(req, res);
 });
-router.post('/details/list',(req, res)=>{
+router.post('/details/list', auth.isAuthorized,(req, res)=>{
   details.list(req, res);
 });
 

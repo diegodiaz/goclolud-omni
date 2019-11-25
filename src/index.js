@@ -1,7 +1,7 @@
 const express = require('express');
+const session = require('express-session');
 const path = require('path');
 const app = express();
-
 
 // Settings
 app.set('port', process.env.PORT || 5000);

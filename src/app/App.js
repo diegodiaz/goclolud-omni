@@ -8,8 +8,10 @@ import { AuthProvider } from './contexts/AuthContext';
 import Loading from './Loading';
 import AuthRouter from './AuthRouter';
 import Login from './Login';
+import Layout from './Layout';
+import Details from './Details';
 
-const Detail = () => (<div>Detail</div>);
+const Detail = () => (<Layout><Details></Details></Layout>);
 
 export default () => {
   return (
